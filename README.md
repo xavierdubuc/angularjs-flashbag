@@ -70,8 +70,7 @@ I recommand the use of a different controller to perform action on messages such
 ```html
 <div ng-controller="FlashMessagesController" ng-show="messages.length > 0" class="row alert-notification-bar">
     <div id="message_{{message.id}}"ng-repeat="message in messages" ui-animate class="clearfix ui-animate alert alert-{{message.type}} custom-alert pull-right ">
-        <i ng-show="message.type == 'success'" class="icon-ok"></i>
-        <i ng-show="message.type == 'error'" class="icon-warning-sign"></i>
+        <i ng-class="{'icon-ok' : message.type === 'success', 'icon-warning-sign' : message.type !== 'success'}"></i>
         <span ng-bind="message.text"></span>
         <a class="close icon-close" ng-click="hide($event,$index);">&times;</a>
     </div>
