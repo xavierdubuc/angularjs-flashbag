@@ -35,6 +35,8 @@ angular.module('xd.flashbag', []).factory('flashbag', function($rootScope){
         };
         if(msg.type !== 'error')
             setTimeout(f,5000);
+        else if(msg.type === 'warning' || msg.type === 'error')
+            setTimeout(f,10000);
     };
 
     /**
@@ -48,6 +50,21 @@ angular.module('xd.flashbag', []).factory('flashbag', function($rootScope){
             id : i,
             type : 'success',
             text : success_text
+        };
+        this.set(message);
+    };
+
+    /**
+     * Add a new warning message
+     * @param {string} warning_text the text of the error message
+     * @returns {undefined} nothing
+     */
+    this.setWarning = function(warning_text)
+    {
+        var message = {
+            id: i,
+            type : 'warning',
+            text : warning_text
         };
         this.set(message);
     };
@@ -78,12 +95,13 @@ angular.module('xd.flashbag', []).factory('flashbag', function($rootScope){
 
     /**
      * Remove a message.
+     * @param {integer} index the index of the message to remove.
      * @returns {array} the removed message.
      */
-    this.remove = function()
+    this.remove = function(index)
     {
         i--;
-        return messages.pop();
+        return messages.splice(index,1);
     };
 
     /**

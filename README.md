@@ -36,9 +36,9 @@ var message = {
 ```
 This call append the new message in the $rootScope variable "messages".
 At this point, you can access all these messages in your templates.
-Success messages are display for 5 seconds and autohide after, Error messages need to be "closed" to disappear.
-To "close" an error, you juste need to call the function 'remove()' on the flashbag service.
-Shortcuts functions exists : `setSuccess(messageText)` and `setError(messageText)` where you just have to provide message text.
+Success messages are display for 5 seconds and autohide after, Error and Warning messages for 10 seconds.
+To "close" an flash messsage, you juste need to call the function 'remove()' on the flashbag service.
+Shortcuts functions exists : `setSuccess(messageText)`, `setWarning(messageText)` and `setError(messageText)` where you just have to provide message text.
 
 ## Example
 
@@ -73,7 +73,7 @@ I recommand the use of a different controller to perform action on messages such
         <i ng-show="message.type == 'success'" class="icon-ok"></i>
         <i ng-show="message.type == 'error'" class="icon-warning-sign"></i>
         <span ng-bind="message.text"></span>
-        <a class="close icon-close" ng-click="hide($event);">&times;</a>
+        <a class="close icon-close" ng-click="hide($event,$index);">&times;</a>
     </div>
 </div>
 ```
