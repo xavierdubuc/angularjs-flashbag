@@ -32,7 +32,6 @@ var message = {
     type : '', // the type of the message (success or error)
     text : '' // the text to display
 };
-});
 ```
 This call append the new message in the $rootScope variable "messages".
 At this point, you can access all these messages in your templates.
